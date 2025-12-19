@@ -1,0 +1,343 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: Arial, sans-serif; 
+}
+
+body { 
+    background-color: white; 
+    min-height: 100vh; 
+    padding: 20px; 
+}
+
+.header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 30px; 
+    padding: 0 20px; 
+}
+
+.left-buttons { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.deposit-btn, .withdraw-btn { 
+    padding: 12px 25px; 
+    background-color: #FFD700; 
+    color: black; 
+    border: 2px solid black; 
+    border-radius: 10px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    text-decoration: none; 
+    text-align: center; 
+    transition: all 0.3s ease; 
+}
+
+.deposit-btn:hover, .withdraw-btn:hover { 
+    background-color: #FFED4E; 
+    transform: translateY(-2px); 
+}
+
+.profile-section { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    background-color: #f0f0f0; 
+    padding: 10px 20px; 
+    border-radius: 25px; 
+    border: 2px solid black; 
+    cursor: pointer; 
+    position: relative; 
+}
+
+.profile-menu { 
+    position: absolute; 
+    right: 0; 
+    top: calc(100% + 6px); 
+    background: white; 
+    border: 2px solid black; 
+    border-radius: 10px; 
+    padding: 8px 0; 
+    min-width: 160px; 
+    display: none; 
+    z-index: 10; 
+}
+
+.profile-menu a { 
+    display: block; 
+    padding: 8px 12px; 
+    color: black; 
+    text-decoration: none; 
+}
+
+.profile-menu a:hover { 
+    background: #f3f3f3; 
+}
+
+.profile-icon { 
+    font-size: 24px; 
+}
+
+.username { 
+    font-weight: bold; 
+    color: black; 
+}
+
+.main-container { 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+}
+
+.assets-sidebar { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    width: 250px; 
+}
+
+.asset-item { 
+    background: white; 
+    border: 2px solid black; 
+    border-radius: 10px; 
+    padding: 15px; 
+    text-align: center; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+}
+
+.asset-item:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 5px 15px rgba(255,0,0,1); 
+}
+
+.asset-icon { 
+    font-size: 24px; 
+    margin-bottom: 5px; 
+}
+
+.asset-name { 
+    font-weight: bold; 
+    font-size: 12px; 
+}
+
+.asset-price { 
+    font-size: 11px; 
+    color: #ff0000; 
+}
+
+.trading-container { 
+    flex: 1; 
+    max-width: 1200px; 
+    background-color: #000; 
+    border: 3px solid black; 
+    border-radius: 20px; 
+    padding: 30px; 
+    position: relative; 
+    min-height: 600px; 
+}
+
+#priceCanvas { 
+    position: absolute; 
+    left: 30px; 
+    right: 30px; 
+    top: 30px; 
+    bottom: 120px; 
+    width: auto; 
+    height: auto; 
+    border-radius: 15px; 
+    background: #0b0f15; 
+    z-index: 1; 
+}
+
+#tradingGrid { 
+    position: absolute; 
+    left: 30px; 
+    right: 30px; 
+    top: 30px; 
+    bottom: 120px; 
+    width: auto; 
+    height: auto; 
+    border-radius: 15px; 
+    pointer-events: auto; 
+    z-index: 2; 
+}
+
+.selected-asset { 
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    background: white; 
+    border: 2px solid black; 
+    border-radius: 15px; 
+    padding: 10px; 
+    text-align: center; 
+    width: 70px; 
+    z-index: 3; 
+}
+
+.selected-icon { 
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.selected-name { 
+    font-weight: bold; 
+    font-size: 8px; 
+}
+
+.bottom-section {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.balance-section { 
+    background: white; 
+    border: 2px solid black; 
+    border-radius: 15px; 
+    padding: 16px; 
+    min-width: 140px; 
+    z-index: 3; 
+}
+
+.balance-label { 
+    font-size: 11px; 
+    color: #666; 
+    margin-bottom: 5px; 
+}
+
+.balance-amount { 
+    font-size: 15px; 
+    font-weight: bold; 
+    color: #4CAF50; 
+}
+
+.trade-buttons { 
+    display: flex; 
+    gap: 12px; 
+    z-index: 3; 
+    flex-wrap: wrap; 
+}
+
+.trade-panel { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+    background: white; 
+    border: 2px solid black; 
+    border-radius: 15px; 
+    padding: 10px 12px; 
+    color: black; 
+    z-index: 3; 
+    flex-wrap: wrap; 
+    max-width: 100%; 
+}
+
+.trade-panel .label { 
+    font-size: 12px; 
+    color: #666; 
+}
+
+.trade-panel .value { 
+    font-weight: bold; 
+    min-width: 80px; 
+    text-align: right; 
+}
+
+.trade-panel input[type="number"] { 
+    width: 120px; 
+    padding: 8px 10px; 
+    border-radius: 10px; 
+    border: 2px solid black; 
+}
+
+.buy-btn, .sell-btn { 
+    padding: 20px 40px; 
+    border: 2px solid black; 
+    border-radius: 15px; 
+    font-size: 20px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    min-width: 120px; 
+}
+
+.buy-btn { 
+    background-color: #4CAF50; 
+    color: white; 
+}
+
+.buy-btn:hover { 
+    background-color: #45a049; 
+    transform: translateY(-3px); 
+}
+
+.sell-btn { 
+    background-color: #f44336; 
+    color: white; 
+}
+
+.sell-btn:hover { 
+    background-color: #da190b; 
+    transform: translateY(-3px); 
+}
+
+.section-title { 
+    text-align: center; 
+    margin-bottom: 15px; 
+    font-weight: bold; 
+    color: black; 
+    font-size: 18px; 
+}
+
+/* Il contenitore dell'icona viene centrato nel suo parent */
+.asset-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* CENTRA TUTTO orizzontalmente */
+}
+
+/* Il div dell’icona */
+.asset-icon {
+    width: 5vw;           
+    max-width: 35px;       
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; /* immagine centrata in ALTO come volevi */
+}
+
+/* L'immagine dentro l’icona */
+.asset-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+
+        
